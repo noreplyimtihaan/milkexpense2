@@ -1,0 +1,395 @@
+/* ===========================
+   Dashboard
+=========================== */
+
+.dashboard-page{
+    width:1100px;
+    max-width:95%;
+    margin:30px auto;
+   
+}
+
+.dashboard-filter{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:24px;
+    padding:18px;
+
+    
+}
+
+.dashboard-filter label{
+    color:#fff;
+    font-size:20px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.dashboard-filter .custom-select{
+    width:700px;
+    max-width:65vw;
+}
+
+.dashboard-filter .option.active{
+    z-index: 10;
+    background:rgba(46,213,115,.22);
+    border:1px solid rgba(46,213,115,.35);
+}
+
+.dashboard-filter .custom-select.disabled .selected-option{
+    cursor:not-allowed;
+    opacity:.55;
+}
+
+.dashboard-filter .custom-select.disabled .selected-option::after{
+    display:none;
+}
+
+.dashboard-month-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    margin:0 auto 24px;
+    padding:18px 22px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:22px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 15px 35px rgba(0,0,0,.22);
+}
+
+.dashboard-month-nav h2{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+    text-align:center;
+}
+
+.dashboard-month-nav button{
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+
+    color:#fff;
+    font:inherit;
+    font-size:22px;
+    line-height:1;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.25),
+        0 8px 20px rgba(0,0,0,.15);
+
+    transition:.35s;
+}
+
+.dashboard-month-nav button:hover:not(:disabled){
+    transform:translateY(-3px);
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,.35),
+        0 12px 25px rgba(255,255,255,.12);
+}
+
+.dashboard-month-nav button:disabled{
+    cursor:not-allowed;
+    color:rgba(255,255,255,.35);
+    background:rgba(255,255,255,.04);
+    border-color:rgba(255,255,255,.08);
+}
+
+.history-container{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.dashboard-total{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(180px,1fr));
+    gap:18px;
+    margin-top:24px;
+    padding:22px;
+
+    background:rgba(46,213,115,.10);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(46,213,115,.28);
+    border-radius:22px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 15px 35px rgba(0,0,0,.24);
+}
+
+.total-box{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:18px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 6px 15px rgba(0,0,0,.12);
+}
+
+/* ===========================
+   Glass Card
+=========================== */
+
+.history-card{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+
+    padding:22px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:22px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 15px 35px rgba(0,0,0,.25);
+
+    transition:.35s ease;
+
+}
+
+.history-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(255,255,255,.25);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.2),
+        0 20px 45px rgba(0,0,0,.35);
+}
+
+
+/* ===========================
+   Info Box
+=========================== */
+
+.info-box{
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    padding:18px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    transition:.3s;
+
+    background:rgba(255,255,255,.06);
+
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 6px 15px rgba(0,0,0,.12);
+}
+
+.info-box:hover{
+
+    background:rgba(255,255,255,.12);
+
+    transform:translateY(-2px);
+
+    border-color:rgba(255,255,255,.18);
+}
+
+
+/* ===========================
+   Label
+=========================== */
+
+.label{
+
+    font-size:13px;
+
+    color:rgba(255,255,255,.65);
+
+    font-weight:600;
+
+    letter-spacing:.4px;
+
+}
+
+
+/* ===========================
+   Value
+=========================== */
+
+.value{
+
+    font-size:21px;
+
+    color:#fff;
+
+    font-weight:700;
+}
+
+
+/* ===========================
+   Empty
+=========================== */
+
+.no-data{
+
+    padding:45px;
+
+    text-align:center;
+
+    color:#fff;
+
+    font-size:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 15px 35px rgba(0,0,0,.25);
+
+}
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .dashboard-page{
+        margin:20px auto;
+    }
+
+    .dashboard-filter{
+        align-items:stretch;
+        flex-direction:column;
+        gap:12px;
+        padding:16px;
+    }
+
+    .dashboard-filter label{
+        font-size:18px;
+    }
+
+    .dashboard-filter .custom-select{
+        width:100%;
+        max-width:100%;
+    }
+
+    .dashboard-month-nav{
+        padding:15px;
+    }
+
+    .dashboard-month-nav h2{
+        font-size:20px;
+    }
+
+    .dashboard-month-nav button{
+        width:42px;
+        height:42px;
+        font-size:18px;
+    }
+
+    .history-card{
+
+        grid-template-columns:repeat(2,1fr);
+
+        padding:18px;
+
+    }
+
+    .value{
+
+        font-size:18px;
+
+    }
+
+    .dashboard-total{
+        grid-template-columns:1fr;
+        padding:18px;
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .history-card{
+
+        grid-template-columns:1fr;
+
+        padding:16px;
+
+    }
+
+    .info-box{
+
+        flex-direction:row;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        padding:15px;
+
+    }
+
+    .total-box{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    }
+
+    .label{
+
+        font-size:14px;
+
+    }
+
+    .value{
+
+        font-size:15px;
+
+    }
+
+}

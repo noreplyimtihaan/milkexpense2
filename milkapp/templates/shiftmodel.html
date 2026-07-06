@@ -1,0 +1,50 @@
+<div id="shiftModal" class="modal">
+    <div class="modal-content">
+        <span class="close-shift close">&times;</span>
+        <h2>Add Milk Shift</h2>
+        <form method="POST" action="{% url 'add_milk_shift' %}">
+            {% csrf_token %}
+            <label>Shift Name</label>
+            <input
+                type="text"
+                name="shift_name"
+                placeholder="Example: Morning, Evening, Buffalo Milk"
+                required>
+            <button type="submit">
+                Save
+            </button>
+        </form>
+    </div>
+</div> 
+
+<div id="milkModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-shift close">&times;</span>
+
+        <h2>Milk Entry</h2>
+        <form method="POST" action="{% url 'add_milk_entry' %}">
+            {% csrf_token %}
+            <input type="hidden" name="entry_date" id="entryDate">
+            <input type="hidden" name="shift_id" id="shiftID">
+            <label>Milk (Liter)</label>
+            <input
+                type="number"
+                id="milkLiter"
+                step="0.5"
+                name="milk_liter"
+                placeholder="Enter liter">
+
+            <label>Price (₹)</label>
+            <input
+                type="number"
+                id="milkPrice"
+                name="milk_price"
+                placeholder="Enter price">
+
+            <button id="saveMilk">Save</button>
+        </form>
+    </div>
+
+</div>

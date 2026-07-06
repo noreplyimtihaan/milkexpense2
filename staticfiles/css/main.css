@@ -1,0 +1,221 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #01161e 0%, #03155c 50%, #024a54 100%);
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+    font-family: "Playpen Sans", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* message css */
+/* 1. Backdrop Overlay */
+.message-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+/* 2. Liquid Glass Message Box Card */
+.message-box {
+    position: relative;
+    overflow: hidden; /* Shine aur wave effects ko andar rakhne ke liye */
+    width: 350px;
+    padding: 35px 25px;
+    text-align: center;
+    box-sizing: border-box;
+    
+    /* Smooth Fluid Base */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(25px);           
+    -webkit-backdrop-filter: blur(25px);   
+    
+    /* Apke Header Jaisa Organic Border Radius Base */
+    border-radius: 24px; 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    
+    /* 3D Glass Depth Shadows */
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 15px rgba(255, 255, 255, 0.03);
+
+    /* Liquid Gradient Matrix Setup */
+    background-image: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.18) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    
+    /* Continuous subtle background movement */
+    animation: liquidWaveCard 6s infinite ease-in-out;
+}
+
+/* 3. Message Titles with Neon Glow */
+.message-title {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
+}
+
+.message-title.success { 
+    color: #2ed573; 
+    text-shadow: 0 0 15px rgba(46, 213, 115, 0.4);
+}
+.message-title.error { 
+    color: #ff4757; 
+    text-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+}
+.message-title.warning { 
+    color: #ffa502; 
+    text-shadow: 0 0 15px rgba(255, 165, 2, 0.4);
+}
+.message-title.info { 
+    color: #1e90ff; 
+    text-shadow: 0 0 15px rgba(30, 144, 255, 0.4);
+}
+
+/* 4. OK Button - Exact Copy of Your Nav Link Concept */
+#closeMessage {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden; 
+    display: inline-block;
+    padding: 10px 32px;
+    border-radius: 30px; 
+    outline: none;
+    cursor: pointer;
+    font-family: "Playpen Sans", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2); 
+    
+    /* Gradient Wave for Button */
+    background-image: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.15) 30%, 
+        rgba(255, 255, 255, 0.25) 50%, 
+        rgba(255, 255, 255, 0.15) 70%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    
+    transition: 
+        color 0.4s ease, 
+        border-color 0.4s ease, 
+        box-shadow 0.4s ease, 
+        background-position 0.6s ease; 
+}
+
+/* Button Hover State */
+#closeMessage:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background-position: 100% 50%;
+    box-shadow: 
+        inset 0 1px 4px rgba(255, 255, 255, 0.4),  
+        0 8px 20px rgba(255, 255, 255, 0.15),      
+        0 0 12px rgba(255, 255, 255, 0.1);         
+        
+    animation: liquidWaveBtn 3s infinite linear;
+}
+
+/* Diagonal Quick-Shine Line for Button */
+#closeMessage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.25), 
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+#closeMessage:hover::before {
+    left: 150%;
+    transition: left 0.7s ease-in-out;
+}
+
+/* Active Click Effect */
+#closeMessage:active {
+    transform: scale(0.97);
+}
+
+/* ─── ANIMATION KEYFRAMES ─── */
+
+/* 1. Pure Card Wave (Subtle Fluid Movement) */
+@keyframes liquidWaveCard {
+    0% {
+        background-position: 0% 50%;
+        border-radius: 24px 24px 24px 24px;
+    }
+    50% {
+        background-position: 100% 50%;
+        border-radius: 22px 26px 23px 25px; /* Subtle jelly fluid morph */
+    }
+    100% {
+        background-position: 0% 50%;
+        border-radius: 24px 24px 24px 24px;
+    }
+}
+
+/* 2. Button Wave (Jo aapke header me tha) */
+@keyframes liquidWaveBtn {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+        border-radius: 28px 32px 28px 32px; 
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Scaling */
+@media screen and (max-width: 480px) {
+    .message-box {
+        width: 90%;
+        padding: 30px 20px;
+    }
+    .message-title {
+        font-size: 17px;
+    }
+}

@@ -1,0 +1,300 @@
+/* ===============================
+   Liquid Glass Modal
+================================ */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(8,18,45,.45);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    z-index:9999;
+}
+
+/* ===============================
+   Glass Card
+================================ */
+
+.modal-content{
+    width:100%;
+    max-width:420px;
+    padding:40px;
+    position:relative;
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.30);
+
+    animation:popup .35s ease;
+}
+
+
+/* ===============================
+   Heading
+================================ */
+
+.modal-content h2{
+
+    text-align:center;
+
+    color:#fff;
+
+    margin-bottom:30px;
+
+    font-size:30px;
+
+    
+
+}
+
+/* ===============================
+   Label
+================================ */
+
+.modal-content label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+/* ===============================
+   Glass Input
+================================ */
+
+.modal-content input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    color:#fff;
+
+    outline:none;
+
+    transition:.3s;
+
+    box-sizing:border-box;
+
+    font-size: larger;
+
+}
+
+.modal-content input::placeholder{
+
+    color:rgba(255,255,255,.45);
+
+}
+
+.modal-content input:focus{
+
+    background:rgba(255,255,255,.14);
+
+
+    box-shadow:0 0 18px rgba(7,235,212,.22);
+
+}
+
+/* ===============================
+   Button
+================================ */
+
+.modal-content button{
+
+    width:100%;
+    padding:14px;
+    margin-top:22px;
+
+    border-radius:50px;
+
+    color:rgba(255,255,255,.9);
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.06);
+
+    background-image:linear-gradient(
+        135deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.15) 30%,
+        rgba(255,255,255,.25) 50%,
+        rgba(255,255,255,.15) 70%,
+        rgba(255,255,255,0) 100%
+    );
+
+    background-size:400% 400%;
+    background-position:0% 50%;
+
+    transition:
+        color .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease,
+        background-position .6s ease,
+        transform .3s ease;
+
+    
+}
+
+.modal-content button:hover{
+
+    color:#fff;
+
+    border-color:rgba(255,255,255,.4);
+
+    background-position:100% 50%;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,.4),
+        0 10px 25px rgba(255,255,255,.15),
+        0 0 12px rgba(255,255,255,.10);
+
+    animation:buttonLiquidWave 3s linear infinite;
+}
+
+/* Moving Shine */
+
+.modal-content button::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+}
+
+.modal-content button:hover::before{
+
+    left:150%;
+    transition:left .8s ease-in-out;
+
+}
+
+@keyframes buttonLiquidWave{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+        border-radius:9px 11px 9px 11px;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+
+
+/* ===============================
+   Close Button
+================================ */
+
+.close{
+
+    position:absolute;
+
+    right:18px;
+    top:15px;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    transition:.3s;
+
+}
+
+.close:hover{
+
+    background:rgba(255,255,255,.15);
+
+    transform:rotate(90deg);
+
+}
+
+/* ===============================
+   Mobile
+================================ */
+
+@media(max-width:500px){
+
+    .modal-content{
+
+        margin:20px;
+        padding:28px;
+
+    }
+
+}

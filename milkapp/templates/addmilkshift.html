@@ -1,0 +1,31 @@
+<div class="shift-bar">
+    <label>Milk Shift</label>
+
+    <div id="shiftSelect" class="custom-select">
+
+        <div class="selected-option">
+            {% if shifts %}
+                {{ shifts.0.name }}
+            {% else %}
+                Select Shift
+            {% endif %}
+        </div>
+
+        <div class="options">
+            {% for shift in shifts %}
+            <div class="option"
+                data-value="{{ shift.shift_id }}">
+                {{ shift.name }}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% if isCalendar %}
+        <button id="addShiftBtn" class="add-btn"> <span>+</span></button>
+    {% endif %}
+</div>
+
+<!-- Hidden value -->
+
+<input type="hidden" id="selectedShift" value="{% if shifts %}{{ shifts.0.shift_id }}{% endif %}">  

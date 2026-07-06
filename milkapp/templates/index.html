@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {% block extra_css %}{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Schoolbell&display=swap" rel="stylesheet">
+</head>
+<body> 
+    {% comment %} for show message {% endcomment %}
+    {% if messages %}
+        <div id="messageModal" class="message-modal">
+            <div class="message-box">
+                {% for message in messages %}
+                    <div class="message-title {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <button id="closeMessage">OK</button>
+            </div>
+        </div>
+    {% endif %} 
+
+    {% include "header.html" %}
+    {% block login_content %}{% endblock %}
+    {% block register_content %}{% endblock %}
+    {% block calendar_content %}{% endblock %}
+    {% block dashboard %}{% endblock %}
+
+    <script type="module" src="{% static 'javascript/main.js' %}"></script>
+    <script type="module" src="{% static 'javascript/profile.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

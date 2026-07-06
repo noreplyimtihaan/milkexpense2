@@ -1,0 +1,265 @@
+/* ===========================
+   Liquid Glass Calendar
+=========================== */
+
+.calendar-container{
+    width:900px;
+    max-width:95%;
+    margin:30px auto;
+    padding:22px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25),
+        inset 0 1px 2px rgba(255,255,255,.2);
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.calendar-header h2{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.calendar-header button{
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+
+    color:#fff;
+    font-size:22px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.25),
+        0 8px 20px rgba(0,0,0,.15);
+
+    transition:.35s;
+}
+
+.calendar-header button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,.35),
+        0 12px 25px rgba(255,255,255,.12);
+
+    animation:liquidWave 2s linear infinite;
+}
+
+/* ===========================
+   Weekdays
+=========================== */
+
+.weekdays{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.weekdays div{
+    text-align:center;
+
+    padding:12px 0;
+
+    color:#fff;
+    font-weight:600;
+    font-size:16px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(20px);
+}
+
+/* ===========================
+   Calendar Grid
+=========================== */
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:12px;
+}
+
+/* ===========================
+   Day Card
+=========================== */
+
+.day{
+    height:90px;
+    position: relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.15),
+        0 8px 20px rgba(0,0,0,.15);
+
+    transition:.35s;
+}
+
+.day:hover .edit-icon{ 
+    transform:translateY(-3px);
+
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,.25),
+        0 12px 25px rgba(255,255,255,.12);
+
+    animation:liquidWave 2s linear infinite;
+}
+
+.day-number {
+    font-size: 18px;
+}
+.edit-icon {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+
+    font-size: 12px;
+    cursor: pointer;
+    padding: 10px;
+    opacity: 1;
+    transition: .2s;
+}
+
+/* ===========================
+   Today
+=========================== */
+
+.today{
+    border:2px solid rgba(255,255,255,.7);
+    box-shadow:
+        0 0 20px rgba(255,255,255,.25),
+        inset 0 1px 3px rgba(255,255,255,.25);
+}
+
+/* ===========================
+   Green
+=========================== */
+
+.green{
+    background:rgba(46,204,113,.35);
+    border:1px solid rgba(46,204,113,.6);
+    color:#fff;
+}
+
+/* ===========================
+   Red
+=========================== */
+
+.red{
+    background:rgba(231,76,60,.35);
+    border:1px solid rgba(231,76,60,.6);
+    color:#fff;
+}
+
+/* ===========================
+   Disabled
+=========================== */
+
+.disabled{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    color:rgba(255,255,255,.35);
+    cursor:not-allowed;
+}
+
+.disabled:hover{
+    transform:none;
+    animation:none;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.1);
+}
+
+/* ===========================
+   Empty
+=========================== */
+
+.empty{
+    visibility:hidden;
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+    .calendar-container{
+        padding:15px;
+        border-radius:22px;
+    }
+
+    .calendar-header h2{
+        font-size:20px;
+    }
+
+    .calendar-header button{
+        width:42px;
+        height:42px;
+        font-size:18px;
+    }
+
+    .weekdays div{
+        font-size:13px;
+        padding:8px 0;
+    }
+
+    .calendar{
+        gap:8px;
+    }
+
+    .day{
+        height:58px;
+        font-size:15px;
+        border-radius:14px;
+    }
+}

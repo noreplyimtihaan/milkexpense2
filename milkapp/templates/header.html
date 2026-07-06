@@ -1,0 +1,43 @@
+<header class="header">
+    <div class="logo">
+        <h1 class="logo-text">Milk Expense Tracker</h1>
+    </div>
+    <div class="profile-area">
+        {% if request.session.user_id  %}
+            
+        
+        <a href="{% url 'calendar' %}" class="c-btn {% if request.resolver_match.url_name == 'calendar' %}active{% endif %}">Calendar</a>
+        <a href="{% url 'dashboard' %}" class="c-btn {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a>
+        <a href="{% url 'update' %}" class="c-btn {% if request.resolver_match.url_name == 'update' %}active{% endif %}">Update</a>
+      
+            
+            <button class="profile-btn" id="profileBtn">
+                ☰
+            </button>
+            {% comment %} profile {% endcomment %}
+            <div class="profile-menu" id="profileMenu">
+
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        {{ request.session.user_name|slice:":1"|upper }}
+                    </div>
+
+                    <div>
+                        <h4>{{ request.session.user_name }}</h4>
+                        <small>Welcome Back</small>
+                    </div>
+                </div>
+
+                <a href="{% url 'logout' %}" class="logout-btn">
+                    Logout
+                </a>
+
+            </div>
+            
+        {% else %}
+            <a href="{% url 'login' %}" class="login-btn">
+                Login
+            </a>
+        {% endif %}
+    </div>
+</header>

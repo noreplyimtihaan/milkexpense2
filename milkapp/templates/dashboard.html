@@ -1,0 +1,110 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/addmilkshift.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block dashboard %}
+<main class="dashboard-page">
+    <div class="dash">
+    <form method="post" id="dashboardFilterForm" class="dashboard-filter">
+        {% csrf_token %}
+        <input type="hidden" name="dashboard_action" value="change_shift">
+        <input type="hidden" name="dashboard_year" value="{{ selected_month|date:'Y' }}">
+        <input type="hidden" name="dashboard_month" value="{{ selected_month|date:'n' }}">
+        <label>Shift By</label>
+
+        <div id="dashboardShiftSelect" class="custom-select liquid-select {% if not shifts %}disabled{% endif %}">
+            <div class="selected-option" role="button" tabindex="0">
+                {% if shifts %}
+                    {{ selected_shift_name }}
+                {% else %}
+                    No Shift Found
+                {% endif %}
+            </div>
+
+            {% if shifts %}
+            <div class="options">
+                {% for shift in shifts %}
+                <div class="option {% if shift.shift_id == selected_shift_id %}active{% endif %}"
+                    data-value="{{ shift.shift_id }}">
+                    {{ shift.name }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <input type="hidden" id="dashboardShiftBy" name="shift_by" value="{% if selected_shift_id %}{{ selected_shift_id }}{% endif %}">
+    </form>
+
+    <form method="post" class="dashboard-month-nav">
+        {% csrf_token %}
+        <input type="hidden" name="dashboard_year" value="{{ selected_month|date:'Y' }}">
+        <input type="hidden" name="dashboard_month" value="{{ selected_month|date:'n' }}">
+        <input type="hidden" name="shift_by" value="{% if selected_shift_id %}{{ selected_shift_id }}{% endif %}">
+        <button type="submit" name="dashboard_action" value="prev_month" aria-label="Previous month" {% if prev_month_disabled %}disabled{% endif %}>
+            &lt;
+        </button>
+
+        <h2>{{ selected_month|date:"F Y" }}</h2>
+
+        <button type="submit" name="dashboard_action" value="next_month" aria-label="Next month" {% if next_month_disabled %}disabled{% endif %}>
+            &gt;
+        </button>
+    </form>
+</div>
+    <div class="history-container">
+        {% for entry in entries %}
+        <div class="history-card">
+            <div class="info-box">
+                <span class="label">Date</span>
+                <span class="value">{{ entry.date|date:"d M Y" }}</span>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Day</span>
+                <span class="value">{{ entry.date|date:"l" }}</span>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Liter</span>
+                <span class="value">{{ entry.liter|floatformat:2 }} L</span>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Price</span>
+                <span class="value">₹ {{ entry.price|floatformat:2 }}</span>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Total</span>
+                <span class="value">₹ {{ entry.total_amount|floatformat:2 }}</span>
+            </div>
+        </div>
+        {% empty %}
+        <div class="no-data">
+            No records found.
+        </div>
+        {% endfor %}
+    </div>
+    {% if total_liter and total_price %}
+    <div class="dashboard-total">
+        <div class="total-box">
+            <span class="label">Total Liter</span>
+            <span class="value">{{ total_liter|floatformat:2 }} L</span>
+        </div>
+        <div class="total-box">
+            <span class="label">Total Price</span>
+            <span class="value">₹ {{ total_price|floatformat:2 }}</span>
+        </div>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="module" src="{% static 'javascript/dashboard.js' %}"></script>
+{% endblock %}
